@@ -18,11 +18,11 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class FetchGithub {
+public class GithubService {
 
-    private static final String TAG = FetchGithub.class.getSimpleName();
+    private static final String TAG = GithubService.class.getSimpleName();
 
-    public void requestGithub(Subscriber<GithubResponse> subscriber) {
+    public void fetchGithub(final Subscriber<GithubResponse> subscriber) {
         final String path = "/";
         Observable.fromCallable(
                 new Callable<GithubResponse>() {
@@ -37,6 +37,7 @@ public class FetchGithub {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
 
+
     }
 
 
@@ -44,7 +45,7 @@ public class FetchGithub {
             .create();
 
 
-    private GithubResponse parseGithubResponse(Response response) throws Exception {
+    private GithubResponse parseGithubResponse(Response response) throws JsonParseException, IOException, JSONException {
         String json = "";
         try {
             json = response.body().string();

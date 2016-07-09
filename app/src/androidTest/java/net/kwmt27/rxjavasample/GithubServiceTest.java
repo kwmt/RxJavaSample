@@ -28,7 +28,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class FetchGithubTest {
+public class GithubServiceTest {
 
     private Gson gson = new GsonBuilder().create();
     private MockWebServer mMockServer;
@@ -62,8 +62,8 @@ public class FetchGithubTest {
 
         TestSubscriber<GithubResponse> testSubscriber = new TestSubscriber<>();
 
-        FetchGithub fetchGithub = new FetchGithub();
-        fetchGithub.requestGithub(testSubscriber);
+        GithubService githubService = new GithubService();
+        githubService.fetchGithub(testSubscriber);
 
         testSubscriber.awaitTerminalEvent();
 
@@ -79,15 +79,15 @@ public class FetchGithubTest {
 
 
     @Test
-    public void testRequestSuggestionLookupIsJSONException() {
+    public void testFetchGithubIsJSONException() {
 
         String json = FileUtil.getJsonStringFromFile("api_github_com_jsonexception.json");
         assertThat(json, notNullValue());
         mMockServer.enqueue(new MockResponse().setBody(json));
 
         TestSubscriber<GithubResponse> testSubscriber = new TestSubscriber<>();
-        FetchGithub fetchGithub = new FetchGithub();
-        fetchGithub.requestGithub(testSubscriber);
+        GithubService githubService = new GithubService();
+        githubService.fetchGithub(testSubscriber);
 
         testSubscriber.awaitTerminalEvent();
         testSubscriber.assertError(JSONException.class);

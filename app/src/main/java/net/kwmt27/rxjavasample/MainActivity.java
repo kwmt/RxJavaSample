@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FetchGithub fetchGithub = new FetchGithub();
-        fetchGithub.requestGithub(new Subscriber<GithubResponse>() {
+        GithubService githubService = new GithubService();
+        githubService.fetchGithub(new Subscriber<GithubResponse>() {
             @Override
             public void onCompleted() {
                 Log.d(TAG, "onCompleted");
