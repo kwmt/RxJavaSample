@@ -1,4 +1,4 @@
-package net.kwmt27.rxjavasample;
+package net.kwmt27.rxjavasample.model;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

@@ -6,6 +6,8 @@ import android.test.suitebuilder.annotation.LargeTest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import net.kwmt27.rxjavasample.entity.GithubResponse;
+import net.kwmt27.rxjavasample.model.GithubService;
 import net.kwmt27.rxjavasample.testUtil.FileUtil;
 
 import org.json.JSONException;
@@ -43,7 +45,7 @@ public class GithubServiceTest {
                 .host(mMockServer.getHostName())
                 .port(mMockServer.getPort())
                 .build();
-        App.getInstance().setApiClient(new MockApiClient(baseUrl));
+        ModelLocator.setApiClient(new MockApiClient(baseUrl));
     }
 
     @After

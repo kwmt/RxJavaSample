@@ -1,10 +1,13 @@
-package net.kwmt27.rxjavasample;
+package net.kwmt27.rxjavasample.model;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
+
+import net.kwmt27.rxjavasample.ModelLocator;
+import net.kwmt27.rxjavasample.entity.GithubResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +32,7 @@ public class GithubService {
                 new Callable<GithubResponse>() {
                     @Override
                     public GithubResponse call() throws Exception {
-                        ApiClient apiClient = App.getInstance().getApiClient();
+                        ApiClient apiClient = ModelLocator.getApiClient();
                         Response response = apiClient.request(path, null);
                         return parseGithubResponse(response);
                     }

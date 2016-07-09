@@ -1,4 +1,4 @@
-package net.kwmt27.rxjavasample;
+package net.kwmt27.rxjavasample.entity;
 
 import com.google.gson.annotations.SerializedName;
 
