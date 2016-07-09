@@ -26,6 +26,9 @@ public class GithubService {
 
     private static final String TAG = GithubService.class.getSimpleName();
 
+    private Gson gson = new GsonBuilder()
+            .create();
+
     public Subscription fetchGithub(final Subscriber<GithubResponse> subscriber) {
         final String path = "/";
         return Observable.fromCallable(
@@ -43,10 +46,6 @@ public class GithubService {
 
 
     }
-
-
-    private Gson gson = new GsonBuilder()
-            .create();
 
 
     private GithubResponse parseGithubResponse(Response response) throws JsonParseException, IOException, JSONException {
