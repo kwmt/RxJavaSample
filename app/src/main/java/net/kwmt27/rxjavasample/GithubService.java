@@ -15,6 +15,7 @@ import java.util.concurrent.Callable;
 import okhttp3.Response;
 import rx.Observable;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -22,9 +23,9 @@ public class GithubService {
 
     private static final String TAG = GithubService.class.getSimpleName();
 
-    public void fetchGithub(final Subscriber<GithubResponse> subscriber) {
+    public Subscription fetchGithub(final Subscriber<GithubResponse> subscriber) {
         final String path = "/";
-        Observable.fromCallable(
+        return Observable.fromCallable(
                 new Callable<GithubResponse>() {
                     @Override
                     public GithubResponse call() throws Exception {
