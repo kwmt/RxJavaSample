@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "net.kwmt27.rxjavasample"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
 
@@ -21,22 +21,22 @@ android {
     }
 }
 
-final OKHTTP_VERSION = '3.3.1'
+final OKHTTP_VERSION = '3.4.1'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:appcompat-v7:24.0.0'
 
     compile 'com.google.code.gson:gson:2.4'
     compile "com.squareup.okhttp3:okhttp:${OKHTTP_VERSION}"
-    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxjava:1.1.7'
     compile 'io.reactivex:rxandroid:1.2.0'
 
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
     androidTestCompile "com.squareup.okhttp3:mockwebserver:${OKHTTP_VERSION}"
     // http://stackoverflow.com/a/36835268
-    androidTestCompile 'com.android.support:support-annotations:23.3.0'
+    androidTestCompile 'com.android.support:support-annotations:24.0.0'
 
 }
