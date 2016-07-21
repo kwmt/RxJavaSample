@@ -1,4 +1,4 @@
-box: keithyokoma/wercker-container-android
+box: kwmt/android-app-build-on-wercker
 
 build:
   steps:
