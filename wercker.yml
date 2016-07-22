@@ -1,4 +1,4 @@
-box: kwmt/android-app-build-on-wercker
+box: kwmt/dockerfile-for-building-android-app
 
 build:
   steps:
