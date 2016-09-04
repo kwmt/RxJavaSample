@@ -2,8 +2,12 @@ package net.kwmt27.rxjavasample.presenter;
 
 import android.util.Log;
 
+import com.google.gson.JsonParseException;
+
 import net.kwmt27.rxjavasample.ModelLocator;
 import net.kwmt27.rxjavasample.entity.GithubResponse;
+
+import java.io.IOException;
 
 import rx.Subscriber;
 import rx.Subscription;
@@ -21,7 +25,7 @@ public class MainPresenter implements IMainPresenter {
 
     @Override
     public void onGetClick() {
-        if(mSubscription != null && !mSubscription.isUnsubscribed()){
+        if (mSubscription != null && !mSubscription.isUnsubscribed()) {
             Log.d(TAG, "キャンセル");
             mSubscription.unsubscribe();
             return;
@@ -36,7 +40,13 @@ public class MainPresenter implements IMainPresenter {
             @Override
             public void onError(Throwable e) {
                 Log.d(TAG, "onError:" + e);
-                mMainView.updateTextView("error:" + e);
+                if (e instanceof JsonParseException) {
+                    mMainView.updateTextView("JSONパースに失敗しました。");
+                } else if (e instanceof IOException) {
+                    mMainView.updateTextView("ネットワーク接続に失敗しました。");
+                } else {
+                    mMainView.updateTextView("error:" + e);
+                }
             }
 
             @Override
